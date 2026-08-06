@@ -162,4 +162,3 @@ Bug reports with a minimal manifest pair (policy + expected verdict) are the mos
 ## License
 
 MIT.
-# netpol-reachability

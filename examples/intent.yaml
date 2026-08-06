@@ -1,0 +1,37 @@
+# What the team believes the policies do.
+# Two of these beliefs are wrong, which is the point of the demo.
+rules:
+  - name: frontend can call the api
+    from: {namespace: prod, labels: {app: frontend}}
+    to: {namespace: prod, labels: {app: api}}
+    port: 8080
+    protocol: TCP
+    expect: allow
+
+  - name: frontend can reach the database
+    from: {namespace: prod, labels: {app: frontend}}
+    to: {namespace: prod, labels: {app: database}}
+    port: 5432
+    protocol: TCP
+    expect: allow
+
+  - name: prometheus can scrape the api
+    from: {namespace: monitoring, labels: {app: prometheus}}
+    to: {namespace: prod, labels: {app: api}}
+    port: 8080
+    protocol: TCP
+    expect: allow
+
+  - name: the api must not reach the database directly
+    from: {namespace: prod, labels: {app: api}}
+    to: {namespace: prod, labels: {app: database}}
+    port: 5432
+    protocol: TCP
+    expect: deny
+
+  - name: monitoring must not reach the database
+    from: {namespace: monitoring}
+    to: {namespace: prod, labels: {app: database}}
+    port: 5432
+    protocol: TCP
+    expect: deny

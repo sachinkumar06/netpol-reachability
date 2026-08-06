@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-1
+  namespace: prod
+  labels:
+    app: frontend
+    tier: web
+spec:
+  containers:
+    - name: web
+      image: nginx:1.27
+      ports:
+        - name: http
+          containerPort: 8080
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: api-1
+  namespace: prod
+  labels:
+    app: api
+    tier: backend
+spec:
+  containers:
+    - name: api
+      image: ghcr.io/example/api:1.4.0
+      ports:
+        - name: http
+          containerPort: 8080
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: database-1
+  namespace: prod
+  labels:
+    app: database
+    tier: data
+spec:
+  containers:
+    - name: postgres
+      image: postgres:16
+      ports:
+        - name: postgres
+          containerPort: 5432
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: prometheus-1
+  namespace: monitoring
+  labels:
+    app: prometheus
+spec:
+  containers:
+    - name: prometheus
+      image: prom/prometheus:v2.54.0
+      ports:
+        - name: web
+          containerPort: 9090
