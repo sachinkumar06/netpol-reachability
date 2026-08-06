@@ -37,7 +37,7 @@ All three are in `examples/demo-cluster`, and all three are things you only disc
 ## Quickstart (5 minutes, no cluster)
 
 ```bash
-git clone https://github.com/OWNER/netpol-reachability
+git clone https://github.com/sachinkumar06/netpol-reachability
 cd netpol-reachability
 pip install -e .
 

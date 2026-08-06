@@ -38,8 +38,8 @@ dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.5"]
 netpol-reachability = "netpol_reachability.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/OWNER/netpol-reachability"
-Issues = "https://github.com/OWNER/netpol-reachability/issues"
+Homepage = "https://github.com/sachinkumar06/netpol-reachability"
+Issues = "https://github.com/sachinkumar06/netpol-reachability/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/netpol_reachability"]
